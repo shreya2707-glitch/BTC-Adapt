@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState, type ReactNode } from "react";
 import { ArrowRight, BookOpen, Info, LayoutDashboard, LineChart } from "lucide-react";
 import { ActualVsPredicted } from "@/components/ActualVsPredicted";
+import { FeatureImportance } from "@/components/FeatureImportance";
 import { MetricsTable } from "@/components/MetricsTable";
 import { Methodology } from "@/components/Methodology";
 import { MoreTab } from "@/components/MoreTab";
@@ -36,6 +37,13 @@ const TABS = [
   { id: "more", label: "More", icon: Info },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
+
+const REGIME_EXPLANATIONS = {
+  Bull: "Bitcoin is trending upward — models favor continued momentum.",
+  Bear: "Bitcoin is trending downward — models track the decline.",
+  Sideways: "Bitcoin is range-bound — no model dominates.",
+  "High Volatility": "Bitcoin is swinging hard — XGBoost is weighted heaviest, historically the best fit for this pattern.",
+} as const;
 
 function StatusItem({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -159,6 +167,7 @@ function Index() {
                 <p className="mt-4 text-xs text-muted-foreground">
                   Based on backtested directional accuracy of {data.metrics.btc_adapt.directional_accuracy}% — not financial advice.
                 </p>
+                <p className="mt-2 text-sm text-muted-foreground">{REGIME_EXPLANATIONS[data.current_regime]}</p>
               </section>
               <PriceRegimeChart data={data} />
               <WeightsPanel data={data} />
@@ -173,10 +182,11 @@ function Index() {
           {tab === "predictions" && data && (
             <>
               <ActualVsPredicted data={data} />
+              <FeatureImportance data={data} />
               <MetricsTable data={data} />
             </>
           )}
-          {tab === "learn" && <Methodology />}
+          {tab === "learn" && <Methodology data={data} />}
           {tab === "more" && <MoreTab />}
         </div>
       </div>
