@@ -1,0 +1,4 @@
+- [ ] Add the regime explanation beneath Tomorrow's Prediction
+- [ ] Add the feature-importance chart to Predictions
+- [ ] Add Methodology & Limitations to Learn More
+- [ ] Verify all three additions in the preview
