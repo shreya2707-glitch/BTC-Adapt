@@ -19,6 +19,18 @@ export interface BtcAdaptResults {
   current_price: number;
   predicted_next_price: number;
   predicted_next_return: number;
+  feature_importance?: {
+    feature: string;
+    importance: number;
+    importance_pct: number;
+  }[];
+  backtest_info?: {
+    total_backtested_days: number;
+    walk_forward_folds: number;
+    retrain_frequency_days: number;
+    regime_detection_method: string;
+    limitations: string[];
+  };
 }
 
 export const REGIME_COLORS: Record<Regime, string> = {

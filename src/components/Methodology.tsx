@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import type { BtcAdaptResults } from "@/lib/btc-adapt";
 
 const STEPS = [
   {
@@ -33,9 +34,10 @@ const GLOSSARY: [string, string][] = [
   ["Walk-forward backtesting", "Testing by repeatedly training on the past and predicting the next day, just as you would in real time."],
 ];
 
-export function Methodology() {
+export function Methodology({ data }: { data: BtcAdaptResults | null }) {
   const [open, setOpen] = useState<number | null>(0);
   const [term, setTerm] = useState<string | null>(null);
+  const info = data?.backtest_info;
 
   return (
     <div className="flex flex-col gap-6">
@@ -78,6 +80,36 @@ export function Methodology() {
           </div>
         </div>
       </section>
+
+      {info && (
+        <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
+          <h2 className="text-base font-semibold">Methodology &amp; Limitations</h2>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-lg border border-border bg-background/60 p-3">
+              <div className="text-xl font-semibold tabular-nums">{info.total_backtested_days}</div>
+              <div className="mt-1 text-xs text-muted-foreground">Backtested days</div>
+            </div>
+            <div className="rounded-lg border border-border bg-background/60 p-3">
+              <div className="text-xl font-semibold tabular-nums">{info.walk_forward_folds}</div>
+              <div className="mt-1 text-xs text-muted-foreground">Walk-forward folds</div>
+            </div>
+            <div className="rounded-lg border border-border bg-background/60 p-3">
+              <div className="text-xl font-semibold tabular-nums">{info.retrain_frequency_days} days</div>
+              <div className="mt-1 text-xs text-muted-foreground">Retraining frequency</div>
+            </div>
+            <div className="rounded-lg border border-border bg-background/60 p-3">
+              <div className="text-sm font-semibold leading-snug">{info.regime_detection_method}</div>
+              <div className="mt-1 text-xs text-muted-foreground">Regime detection</div>
+            </div>
+          </div>
+          <h3 className="mt-6 text-sm font-semibold">What this dashboard does not claim</h3>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-muted-foreground">
+            {info.limitations.map((limitation) => (
+              <li key={limitation}>{limitation}</li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
         <h2 className="text-base font-semibold">Glossary</h2>
