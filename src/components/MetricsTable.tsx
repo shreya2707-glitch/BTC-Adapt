@@ -33,7 +33,7 @@ export function MetricsTable({ data }: { data: BtcAdaptResults }) {
     <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold">Model Performance</h2>
+          <h2 className="text-lg font-bold tracking-tight sm:text-xl">Model Performance</h2>
           <p className="mt-1 text-xs text-muted-foreground">Click a metric header to sort</p>
         </div>
         <div className="inline-flex rounded-lg border border-border p-0.5 text-xs">

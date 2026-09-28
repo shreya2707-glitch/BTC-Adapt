@@ -42,7 +42,7 @@ export function Methodology({ data }: { data: BtcAdaptResults | null }) {
   return (
     <div className="flex flex-col gap-6">
       <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-        <h2 className="text-base font-semibold">How BTC-Adapt Works</h2>
+        <h2 className="text-lg font-bold tracking-tight sm:text-xl">How BTC-Adapt Works</h2>
         <p className="mt-1 text-xs text-muted-foreground">Click a step to see what happens</p>
 
         <ol className="mt-5 grid gap-2 sm:grid-cols-5">
@@ -83,7 +83,7 @@ export function Methodology({ data }: { data: BtcAdaptResults | null }) {
 
       {info && (
         <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-          <h2 className="text-base font-semibold">Methodology &amp; Limitations</h2>
+          <h2 className="text-lg font-bold tracking-tight sm:text-xl">Methodology &amp; Limitations</h2>
           <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-lg border border-border bg-background/60 p-3">
               <div className="text-xl font-semibold tabular-nums">{info.total_backtested_days}</div>
@@ -112,7 +112,7 @@ export function Methodology({ data }: { data: BtcAdaptResults | null }) {
       )}
 
       <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-        <h2 className="text-base font-semibold">Glossary</h2>
+        <h2 className="text-lg font-bold tracking-tight sm:text-xl">Glossary</h2>
         <div className="mt-4 grid gap-2 sm:grid-cols-2">
           {GLOSSARY.map(([t, d]) => (
             <button

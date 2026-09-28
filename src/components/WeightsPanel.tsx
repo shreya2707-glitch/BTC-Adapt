@@ -11,7 +11,7 @@ export function WeightsPanel({ data }: { data: BtcAdaptResults }) {
 
   return (
     <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-      <h2 className="text-base font-semibold">Model Contribution by Regime</h2>
+      <h2 className="text-lg font-bold tracking-tight sm:text-xl">Model Contribution by Regime</h2>
       <p className="mt-1 text-xs text-muted-foreground">
         Ensemble weights used when the market is{" "}
         <span style={{ color: REGIME_COLORS[regime] }}>{regime}</span>

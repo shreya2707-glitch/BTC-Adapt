@@ -6,7 +6,7 @@ export function MoreTab() {
   return (
     <div className="flex flex-col gap-6">
       <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-        <h2 className="text-lg font-semibold">
+        <h2 className="text-lg font-bold tracking-tight sm:text-xl">
           BTC<span className="text-primary">-Adapt</span>
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -27,7 +27,7 @@ export function MoreTab() {
       </section>
 
       <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-        <h2 className="text-base font-semibold">Tech stack</h2>
+        <h2 className="text-lg font-bold tracking-tight sm:text-xl">Tech stack</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {STACK.map((s) => (
             <span key={s} className="rounded-full border border-border bg-muted px-3 py-1 text-xs font-medium">
@@ -38,7 +38,7 @@ export function MoreTab() {
       </section>
 
       <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-        <h2 className="text-base font-semibold">Links</h2>
+        <h2 className="text-lg font-bold tracking-tight sm:text-xl">Links</h2>
         <div className="mt-3 flex flex-wrap gap-3">
           <a href="#" className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground transition-all duration-200 hover:scale-[1.03] hover:brightness-110">
             <Github className="h-4 w-4" /> View on GitHub

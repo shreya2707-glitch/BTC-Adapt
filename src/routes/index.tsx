@@ -83,7 +83,7 @@ function Index() {
 
   return (
     <main className="min-h-screen px-4 pb-24 pt-6 sm:px-6 sm:pb-10 lg:px-10">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8">
         <header className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="min-w-0">
@@ -128,7 +128,7 @@ function Index() {
           )}
         </header>
 
-        <div key={tab} className="flex animate-fade-in flex-col gap-6">
+        <div key={tab} className="flex animate-fade-in flex-col gap-8">
           {needsData && error && (
             <div className="rounded-xl border border-border bg-card p-6 text-center text-sm text-muted-foreground">
               Could not load the backtest results. {error}
@@ -156,7 +156,7 @@ function Index() {
                   </span>
                 </div>
                 <div className="mt-4 flex flex-wrap items-end gap-x-8 gap-y-2">
-                  <div className="text-4xl font-bold tracking-tight tabular-nums sm:text-5xl">{currency(data.predicted_next_price)}</div>
+                  <div className="text-5xl font-extrabold tracking-tight tabular-nums sm:text-7xl">{currency(data.predicted_next_price)}</div>
                   <div
                     className="pb-1 text-2xl font-semibold tabular-nums sm:text-3xl"
                     style={{ color: ret >= 0 ? REGIME_COLORS.Bull : REGIME_COLORS.Bear }}
@@ -196,7 +196,7 @@ function Index() {
           <button
             key={t.id}
             onClick={() => go(t.id)}
-            className={`flex flex-col items-center gap-1 py-2.5 text-[11px] font-medium transition-colors duration-200 ${
+            className={`flex flex-col items-center min-h-14 justify-center gap-1 py-3 text-xs font-medium transition-all duration-200 active:scale-95 ${
               tab === t.id ? "text-primary" : "text-muted-foreground"
             }`}
           >
