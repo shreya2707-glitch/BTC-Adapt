@@ -28,7 +28,7 @@ export function WeightsPanel({ data }: { data: BtcAdaptResults }) {
             }`}
           >
             {r}
-            {r === data.current_regime && <span className="ml-1.5 inline-block h-1.5 w-1.5 rounded-full bg-primary align-middle" />}
+            {r === data.current_regime && <span className="ml-1.5 rounded bg-primary/20 px-1 py-px text-[10px] uppercase tracking-wide text-primary">current</span>}
           </button>
         ))}
       </div>
