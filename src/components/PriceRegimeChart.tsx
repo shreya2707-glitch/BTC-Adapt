@@ -23,7 +23,7 @@ import {
   type Regime,
 } from "@/lib/btc-adapt";
 
-export function PriceRegimeChart({ data, markerDate }: { data: BtcAdaptResults; markerDate?: string }) {
+export function PriceRegimeChart({ data, markerDate }: { data: BtcAdaptResults; markerDate?: string | undefined }) {
   const [selected, setSelected] = useState<Regime | null>(null);
   const bands = regimeBands(data.regimes);
 
