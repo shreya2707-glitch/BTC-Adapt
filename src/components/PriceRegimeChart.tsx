@@ -4,6 +4,7 @@ import {
   Line,
   LineChart,
   ReferenceArea,
+  ReferenceLine,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -22,7 +23,7 @@ import {
   type Regime,
 } from "@/lib/btc-adapt";
 
-export function PriceRegimeChart({ data }: { data: BtcAdaptResults }) {
+export function PriceRegimeChart({ data, markerDate }: { data: BtcAdaptResults; markerDate?: string }) {
   const [selected, setSelected] = useState<Regime | null>(null);
   const bands = regimeBands(data.regimes);
 
@@ -116,6 +117,7 @@ export function PriceRegimeChart({ data }: { data: BtcAdaptResults }) {
                 return [`${currency(v)}${regime ? ` · ${regime}` : ""}`, "Close"];
               }}
             />
+            {markerDate && <ReferenceLine x={markerDate} stroke="#f59e0b" strokeWidth={1.5} strokeDasharray="4 3" />}
             <Line isAnimationActive={false} type="monotone" dataKey="close" stroke={CHART.amber} strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>

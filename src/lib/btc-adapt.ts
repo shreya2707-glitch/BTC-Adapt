@@ -24,6 +24,7 @@ export interface BtcAdaptResults {
     importance: number;
     importance_pct: number;
   }[];
+  rolling_accuracy?: { period_start: string; period_end: string; directional_accuracy: number; mae: number }[];
   backtest_info?: {
     total_backtested_days: number;
     walk_forward_folds: number;

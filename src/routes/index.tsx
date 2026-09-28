@@ -7,6 +7,8 @@ import { MetricsTable } from "@/components/MetricsTable";
 import { Methodology } from "@/components/Methodology";
 import { MoreTab } from "@/components/MoreTab";
 import { PriceRegimeChart } from "@/components/PriceRegimeChart";
+import { AccuracyOverTime } from "@/components/AccuracyOverTime";
+import { RegimeTimeMachine } from "@/components/RegimeTimeMachine";
 import { WeightsPanel } from "@/components/WeightsPanel";
 import { REGIME_COLORS, currency, pct, type BtcAdaptResults } from "@/lib/btc-adapt";
 
@@ -58,6 +60,7 @@ function Index() {
   const [data, setData] = useState<BtcAdaptResults | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [tab, setTab] = useState<TabId>("overview");
+  const [tmIndex, setTmIndex] = useState<number | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -78,6 +81,7 @@ function Index() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const tmI = data ? (tmIndex ?? data.prices.length - 1) : 0;
   const needsData = tab === "overview" || tab === "predictions";
   const ret = data ? data.predicted_next_price / data.current_price - 1 : 0;
 
@@ -169,7 +173,8 @@ function Index() {
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">{REGIME_EXPLANATIONS[data.current_regime]}</p>
               </section>
-              <PriceRegimeChart data={data} />
+              <PriceRegimeChart data={data} markerDate={data.prices[tmI]?.date} />
+              <RegimeTimeMachine data={data} index={tmI} onChange={setTmIndex} />
               <WeightsPanel data={data} />
               <button
                 onClick={() => go("predictions")}
@@ -182,6 +187,7 @@ function Index() {
           {tab === "predictions" && data && (
             <>
               <ActualVsPredicted data={data} />
+              <AccuracyOverTime data={data} />
               <FeatureImportance data={data} />
               <MetricsTable data={data} />
             </>

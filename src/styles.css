@@ -167,3 +167,21 @@
 
 @keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
 @utility animate-fade-in { animation: fade-in 200ms ease-out both; }
+
+@utility time-slider {
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-muted);
+  cursor: pointer;
+  &::-webkit-slider-thumb {
+    appearance: none; width: 18px; height: 18px; border-radius: 9999px;
+    background: #f59e0b; border: 3px solid var(--color-card);
+    box-shadow: 0 0 0 1px #f59e0b; transition: transform 150ms ease;
+  }
+  &::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  &::-moz-range-thumb {
+    width: 14px; height: 14px; border-radius: 9999px;
+    background: #f59e0b; border: 3px solid var(--color-card);
+  }
+}
