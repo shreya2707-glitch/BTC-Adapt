@@ -23,11 +23,11 @@ export function AccuracyOverTime({ data }: { data: BtcAdaptResults }) {
             />
             <Tooltip
               {...TOOLTIP_STYLE}
-              labelFormatter={(_l, p) => {
+              labelFormatter={(_l: unknown, p: readonly { payload?: unknown }[]) => {
                 const r = p?.[0]?.payload as Row | undefined;
                 return r ? `${shortDate(r.period_start)} → ${shortDate(r.period_end)}` : "";
               }}
-              formatter={(v: number, _n, item) => {
+              formatter={(v: number, _n: string, item: { payload?: unknown }) => {
                 const r = item.payload as Row;
                 return [`${v.toFixed(1)}% · MAE ${currency(r.mae)}`, "Directional accuracy"];
               }}
