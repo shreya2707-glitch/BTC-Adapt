@@ -49,7 +49,7 @@ export function PriceRegimeChart({ data }: { data: BtcAdaptResults }) {
     <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 className="text-base font-semibold">Price &amp; Detected Regimes</h2>
+          <h2 className="text-lg font-bold tracking-tight sm:text-xl">Price &amp; Detected Regimes</h2>
           <p className="mt-1 text-xs text-muted-foreground">Click a shaded band or legend item to inspect a regime</p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs">

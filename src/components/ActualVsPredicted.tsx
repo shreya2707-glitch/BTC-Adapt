@@ -31,7 +31,7 @@ export function ActualVsPredicted({ data }: { data: BtcAdaptResults }) {
 
   return (
     <section className="rounded-xl border border-border bg-card p-5 shadow-lg sm:p-6">
-      <h2 className="text-base font-semibold">Actual vs Predicted</h2>
+      <h2 className="text-lg font-bold tracking-tight sm:text-xl">Actual vs Predicted</h2>
       <p className="mt-1 text-xs text-muted-foreground">Walk-forward backtest · drag the handles below the chart to zoom into a window</p>
       <div className="mt-4 h-[380px] w-full">
         <ResponsiveContainer width="100%" height="100%">
